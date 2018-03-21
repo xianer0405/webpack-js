@@ -1,3 +1,5 @@
+export * from './promise/promise'
+
 class Person {
 	constructor(name='jack', age=31) {
 		this.name = name 

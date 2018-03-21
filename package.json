@@ -1,10 +1,10 @@
 {
   "name": "webpack-js",
   "version": "1.0.0",
-  "description": "js实战平台",
+  "description": "JS练习平台",
   "main": "index.js",
   "scripts": {
-    "test": "no script"
+    "dev": "webpack -w"
   },
   "keywords": [
     "JS",
