@@ -27,85 +27,100 @@ f1().then(f2);
 
 *************************************************/
 export function test() {
-	console.log('es6/promise/promise.js')
-	test1()
-	test2()
-	test3()
-	test4()
+  console.log('es6/promise/promise.js')
+  //test1()
+  //test2()
+  test3()
+  //test4()
+}
+
+function testAjax() {
+  const getJSON = function (url) {
+
+  }
 }
 
 /*ajax获取数据*/
 function test4() {
-	var search = function() {
-		const url = 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1521626319495'
-		let xhr = new XMLHttpRequest() 
-		let result ;
-		let p = new Promise((resolve, reject) => {
-			xhr.open('GET', url, true)
-			xhr.onload = function(e) {
-				if(this.status === 200) {
-					result = JSON.parse(this.responseText) 
-					resolve(result)
-				}
-			}
-			xhr.onerror = function(e) {
-				reject(e)
-			}
-			xhr.send()
-		})
-		return p
-	}
+  var search = function () {
+    const url = 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1521626319495'
+    let xhr = new XMLHttpRequest()
+    let result;
+    let p = new Promise((resolve, reject) => {
+      xhr.open('GET', url, true)
+      // referer: 'https://c.y.qq.com/',
+      // host: 'c.y.qq.com'
+      xhr.setRequestHeader('host', 'c.y.qq.com')
+      xhr.setRequestHeader('referer', 'https://c.y.qq.com/')
+      xhr.onload = function (e) {
+        if (this.status === 200) {
+          result = JSON.parse(this.responseText)
+          resolve(result)
+        }
+      }
+      xhr.onerror = function (e) {
+        reject(e)
+      }
+      xhr.send()
+    })
+    return p
+  }
 
-	search().then(console.log, console.error)
+  search().then(console.log, console.error)
 }
 
 /*图片加载*/
+var count = 1
+var c2 = 1 
 function test3() {
-	const imageUrl='https://t12.baidu.com/it/u=496803260,3519642869&fm=173&app=25&f=JPEG?w=640&h=575&s=410B93573ED347D2053DB9EF0300E069'
-	var preloadImage = function(path) {
-		return new Promise((resolve, reject) => {
-			var image = new Image() 
-			image.onload = function() {
-				console.log(image)
-				resolve(image)
-			} 
-			image.onerror = reject
-			image.src = path 
-		})
-	}
-	// 加载图像插入到页面中
-	preloadImage(imageUrl).then((res) => {
-		console.log(`test3 res=${res}`)
-		var imageWrapperEl = document.createElement('div')
-		// imageWrapperEl.style.border = "1px soild #ccc"
-		imageWrapperEl.style.height = "300px"
-		imageWrapperEl.appendChild(res);
-		document.body.appendChild(imageWrapperEl)
-	})
+  console.log(c2++) 
+  const imageUrl = 'https://t12.baidu.com/it/u=496803260,3519642869&fm=173&app=25&f=JPEG?w=640&h=575&s=410B93573ED347D2053DB9EF0300E069'
+  var preloadImage = function (path) {
+    return new Promise((resolve, reject) => {
+      var image = new Image()
+      image.onload = function () {
+        
+        resolve(image)
+      }
+      image.onerror = reject
+      image.src = path
+    })
+  }
+  // 加载图像插入到页面中
+  preloadImage(imageUrl).then((res) => {
+    console.log(`test3 lalal res=${res}`)
+    var wrapperEl = document.querySelector('.img-wrapper')
+    console.log(wrapperEl)
+    // imageWrapperEl.style.border = "1px soild #ccc"
+    wrapperEl.style.height = "300px"
+    wrapperEl.appendChild(res)
+  })
 }
 
-/*then方法调用*/
+/**
+ * TODO 
+ * 
+ */
 function test2() {
-	var p1 = new Promise((resolve, reject) => {
-		resolve('成功')
-	})
-	p1.then(console.log, console.error)
+  var p1 = new Promise((resolve, reject) => {
+    resolve('成功')
+  })
+  p1.then(console.log, console.error)
 
-	var p2 = new Promise((resolve, reject) => {
-		reject(new Error('失败'))
-	})
-	p2.then(console.log, console.error)
+  var p2 = new Promise((resolve, reject) => {
+    reject(new Error('失败'))
+  })
+  p2.then(console.log, console.error)
 }
 
 function test1() {
-	function timeout(ms) {
-		return new Promise((resolve, reject) => {
-			setTimeout(resolve, ms, 'done')
-		})
-	}
+  function timeout(ms) {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, ms, 'done')
+    })
+  }
 
-	timeout(2000).then((res) => {
-		console.log(res)
-	})
+  timeout(2000).then((res) => {
+    console.log(res)
+  })
 }
-
