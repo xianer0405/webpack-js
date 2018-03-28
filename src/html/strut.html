@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>STRUT Demo</title>
+    <style>
+        div {
+            background-color: #cd0000 ;
+        }
+        span {
+            display: inline-block ;
+        }
+    </style>
+</head>
+<body>
+    <h1>幽灵空白节点</h1>
+    <!--幽灵空白节点， 规范定义为 strut 支柱
+        存在于每一个 行框盒子 前面， 具有该元素的字体和行高属性的0宽度的内联盒子
+    -->
+    <div>
+        <span></span>
+    </div>
+</body>
+</html>

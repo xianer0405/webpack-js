@@ -10,6 +10,8 @@ class Person {
 	}
 }
 
+console.log('HMR')
+
 let arr = [1,2,4]
 
 let newArr = arr.map((item) => {
