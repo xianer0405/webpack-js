@@ -10,7 +10,7 @@ class Person {
 	}
 }
 
-console.log('HMR')
+// console.log('HMR')
 
 let arr = [1,2,4]
 

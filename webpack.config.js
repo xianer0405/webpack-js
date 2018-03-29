@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack');
 const fs = require('fs')
 
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 let pagePlugins = []
 const htmlPath = './src/html'
 let htmlPages = fs.readdirSync(path.resolve(__dirname, htmlPath))
 for (let fileName of htmlPages) {
-  if(fileName.endsWith('.html')) {
+  if (fileName.endsWith('.html')) {
     let plugin = new HtmlWebpackPlugin({
       title: fileName,
       filename: 'html/' + fileName,
@@ -51,7 +51,14 @@ module.exports = {
       template: './index.html',
       chunks: ['index']
     }),
-    ...pagePlugins
+    ...pagePlugins,
+    new CopyWebpackPlugin([{
+      from: './src/assert/**',
+      to: 'assert',
+      toType:'dir',
+      flatten: true,
+      cache: true
+    }])
   ],
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),

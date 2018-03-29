@@ -7,8 +7,8 @@ import css from './src/css/index.css';
 
 //console.log(es6) 
 //let p = new es6.default() 
-console.log(test)
+// console.log(test)
 test()
-console.log('12345')
+// console.log('12345')
 //p.toString()
 //test() ;
