@@ -113,15 +113,17 @@ html, body {
   background-color: #333;
 }
 
-/*.wrap-06 {
+/*<!--absolute + margin : auto-->*/
+.wrap-06 {
   margin-top: 10px;
 
   position: relative;
   width: 100%;
   height: 300px;
   background-color: #ccc;
-}*/
+}
 
+/*这种方法能简单的做到居中，但是必须有width和height值*/
 .wrap-06 .ele {
   position: absolute;
   top: 0;
@@ -134,3 +136,273 @@ html, body {
   background-color: #333;
 }
 
+.wrap-07 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*background-color: #ccc;*/
+}
+
+.wrap-07 > p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.wrap-07 > p > img:nth-child(1) {
+  position: static;
+  visibility: hidden;
+}
+
+/*
+第二张图绝对定位，则父元素p的表现为包括第一章图片，
+其宽高有第一章图片决定，此时第二张图片设置right和bottom的是参照父元素的宽高进行计算
+就达到了偏移自身的-50%，实现了水平垂直居中
+***********************************/
+.wrap-07 > p > img:nth-child(2) {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+}
+
+.wrap-08 {
+  width: 100%;
+  height: 200px;
+  background-color: #ccc;
+}
+
+/*
+关键一步，使用float将ele元素表现出包裹性，即宽高有子元素决定
+通过相对定位将定位元素的父元素偏移50%，基于wrap元素的百分比
+在将定位元素偏移-50% 拉回到居中位置 基于ele元素的百分比值
+
+优点： 元素可以不定宽，任何时候都可以做到居中
+
+
+发现了一个问题： 该问题不是很理解
+就是当居中元素的父元素left:50%时，如果元素宽度足够大，会超出外面的容器，
+而如果外面的容器又正好是overflow:auto的话，那就会在外面产生滚动条，
+*****************************************************/
+.wrap-08 .ele {
+  float: left;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  background-color: transparent;
+}
+
+.wrap-08 .ele .ele-inner {
+  position: relative;
+  left: -50%;
+  transform: translate3d(0, -50%, 0);
+  background-color: #333;
+}
+
+.wrap-09 {
+  margin-top: 10px;
+  float: left;
+  width: 100%;
+  height: 400px;
+  background-color: #ccc;
+}
+
+.wrap-09 .placeholder {
+  float: left;
+  width: 100%;
+  height: 50%; /*占据父元素的50%的高度，即将居中元素移动到50%的位置*/
+  margin-bottom: -50px; /*margin-bottom将content拉回自身的50%*/
+  background-color: #cd0000;
+}
+
+/*
+1.父元素必须有一个高度值，不能是百分比
+2.居中元素需要定高， 占位符的高度需要根据居中元素的高度计算
+可以不定宽
+******************/
+.wrap-09 .content {
+  position: relative;
+  height: 100px;
+  left: 50%;
+  /*横轴拉回自身的50%*/
+  transform: translate3d(-50%, 0, 0);
+  clear: both;
+  background-color: #333;
+  max-width: 100px;
+}
+
+.clear-fix {
+  clear: both;
+}
+
+/*
+text-align:center + vertical-align:middle
+优点：这个方法对于居中元素不需要定宽高，
+而且元素根据vertical-align值的不同不仅仅可以实现居中，
+还可以将其放在上面下面等。
+缺点： 是父元素需定高
+********************************************/
+.wrap-10 {
+  margin-top: 10px;
+
+  width: 100%;
+  height: 400px;
+  text-align: center; /*将inline-block的子元素水平居中*/
+  font-size: 0; /*修复原文件中换行产生的空间*/
+  background-color: #ccc;
+}
+
+/*.wrap-10::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+}*/
+
+.wrap-10 .placeholder,
+.wrap-10 .ele {
+  vertical-align: middle;
+  display: inline-block; /*水平排列，能够被text-align和vertical-align控制*/
+}
+
+/*
+与父元素等高，不显示
+作为ele元素vertical-align的参照物
+*/
+.wrap-10 .placeholder {
+  overflow: hidden;
+  width: 0;
+  min-height: inherit;
+  height: inherit;
+}
+
+.wrap-10 .ele {
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+}
+
+/*
+text-align:center + line-height + vertical-align:middle
+重点：重点是父容器在其下面产生了一个隐匿的文本节点，
+     该节点因line-height属性的作用拥有与父元素一样的高的行高，
+     此时ele就有了vertical-align对齐的参照物
+优点：居中元素无需定宽高
+缺点：但缺点是得给父容器一个固定的行高才行。
+********************************************/
+
+.wrap-11 {
+  margin-top: 10px;
+  width: 100%;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  background: #ccc;
+  font-size: 0;
+}
+
+.wrap-11 > .ele {
+  display: inline-block;
+  line-height: normal;
+  vertical-align: middle;
+  font-size: 16px;
+  width: 300px;
+  height: 100px;
+  background-color: #333;
+}
+
+.wrap-12 {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 349px; /*约为高度的0.873*/
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 400px;
+  background-color: #ccc;
+}
+
+.wrap-12 .ele {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  background-color: #333;
+}
+
+.wrap-flex {
+  margin-top: 10px;
+
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ccc;
+}
+
+.wrap-flex .ele {
+  background-color: #333;
+}
+
+/*
+只有父元素定义flex，子元素定义margin:auto：
+子元素宽高是由内容决定，margin:auto则将子元素通过margin充满父元素，以达到居中效果
+
+flex-item有明确大小并且margin:auto时外边距吸收了伸缩包含块下的额外的空间，
+并且能被用于居中以及会让其相邻的flex item尽可能的往这个flex item所在的那一个方向靠。
+*******************/
+.wrap-flex-2 {
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  height: 300px;
+
+  background-color: #ccc;
+}
+
+.wrap-flex-2 .ele {
+  margin: auto;
+  background-color: #333;
+}
+
+.wrap-table {
+  margin-top: 10px;
+  display: table;
+  width: 100%;
+  height: 300px;
+  background-color: #ccc;
+}
+
+.wrap-table > .ele {
+  display: table-cell;
+  background-color: transparent;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.wrap-table > .ele > .ele-inner {
+  width: 300px;
+  height: 100px;
+  display: inline-block;
+  background-color: #333;
+  text-align: left;
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  height: 200px;
+  border-width: 0;
+  background-color: #ccc;
+}
+
+button:focus {
+  outline: none;
+}
+
+button > div {
+  display: inline-block;
+  font-size: 16px;
+  background-color: #333;
+}
