@@ -9,6 +9,7 @@ import css from './src/css/index.css';
 //let p = new es6.default() 
 // console.log(test)
 test()
+console.log(123)
 // console.log('12345')
 //p.toString()
 //test() ;
