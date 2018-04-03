@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文本的水平垂直居中</title>
+</head>
+<body>
+    <div class="warp wrap-01">
+        水平垂直居中，水平垂直居中
+    </div>
+
+    <div class="warp wrap-02">
+        <div class="content">水平垂直居中<br>水平居中</div>
+    </div>
+
+    <div class="warp wrap-03">
+        <div class="content">margin填充</div>
+    </div>
+
+    <!--absolute布局上下文下的水平垂直居中-->
+    <div class="wrap wrap-04">
+        <div class="ele margin">水平垂直居中水平垂直<br>居中水平垂直居中水平<br>垂直居中水平垂直居<br>中水平垂直居中</div>
+    </div>
+
+    <div class="wrap wrap-04">
+        <div class="ele translate">水平垂直居中水平垂直<br>居中水平垂直居中水平<br>垂直居中水平垂直居<br>中水平垂直居中</div>
+    </div>
+
+    <div class="wrap wrap-04">
+        <div class="ele relative">
+            <div class="ele-inner">水平垂直居中水平垂直<br>居中水平垂直居中水平<br>垂直居中水平垂直居<br>中水平垂直居中</div>
+        </div>
+    </div>
+    
+    <!--text-align:center + absolute-->
+    <div class="wrap wrap-05">
+        <div class="ele">123</div>
+    </div>
+
+    <!--absolute + margin : auto-->
+    <div class="wrap-06">
+        <div class="ele">absolute+margin:auto</div>
+    </div>
+
+    <!--适用于图片居中的网易nec的一个方法-->
+    <div class="wrap-07">
+        <p>
+            <img src="http://nec.netease.com/img/s/1.jpg" alt="" />
+            <img src="http://nec.netease.com/img/s/1.jpg" alt="" />
+        </p>
+    </div>
+    
+    <!--未理解, float将ele变成包裹性容器-->
+    <!--float + -50%-->
+    <div class="wrap-08">
+        <div class="ele">
+            <div class="ele-inner">居中居中居中居中居中居中<br>居中居中居中居中居中居中居中居中居<br>中居中居中居中居中居中居中居中居中居<br>中居中居中居中居中居中居中</div>
+        </div>
+    </div>
+
+    <!--margin-bottom : -50%-->
+    <div class="wrap-09">
+        <div class="placeholder"></div>
+        <div class='content'>123123</div>
+    </div>
+    <div class="clear-fix"></div>
+
+    <!--text-align:center + vertical-align:middle-->
+    <div class="wrap-10">
+        <div class='placeholder'></div><!--占位元素，用来作为居中元素的参照物-->
+        <div class="ele"></div>
+    </div>
+
+    <div class="wrap-11">
+        <div class="ele">居中居中居中居中居中居中<br>居中居中居中居中居中居中居中<br>居中居中居中居中居中居中居中居中<br>居中居中居中居中居中居中居中居中</div>
+    </div>
+    
+    <!--text-align:center + font-size
+    失败的例子，没有垂直居中
+    -->
+    <div class="wrap-12">
+        <div class="ele"></div>
+    </div>
+
+
+    <div class="wrap-flex">
+        <div class="ele">
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中
+        </div>
+    </div>
+
+    <!--
+    只有父元素定义flex，子元素定义margin:auto：
+    
+    -->
+    <div class="wrap-flex-2">
+        <div class="ele">
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中<br>
+            居中居中居中居中居中居中居中
+        </div>
+    </div>
+
+    <!--table布局上下文下的水平垂直居中-->
+    <div class='wrap-table'>
+        <div class='ele'>
+            <div class="ele-inner">居中居中居中居中居中居中居中居中<br>居中居中居中居中居中居中居中居中<br>居中居中居中居中居中居中居中居中居中居中</div>
+        </div>
+    </div>
+
+    <button>
+        <div class="ele">居中居中居中居中居中居中居中居中<br>居中居中居中</div>
+    </button>
+</body>
+</html>

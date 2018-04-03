@@ -4,8 +4,8 @@
   "description": "JS练习平台",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -w",
-    "start": "webpack-dev-server"
+    "watch": "webpack -w",
+    "dev": "webpack-dev-server"
   },
   "keywords ": [
     "JS",
@@ -19,6 +19,7 @@
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.1.0",
     "style-loader": "^0.20.3",
