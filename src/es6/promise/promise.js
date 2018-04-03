@@ -249,7 +249,7 @@ const getJSON = function (url) {
     client.open('GET', url)
     client.onreadystatechange = handler
     client.responseType = 'json'
-    client.setRequestHeader('Accepte', 'application/json')
+    client.setRequestHeader('Accept', 'application/json')
     client.send()
   })
   return promise
