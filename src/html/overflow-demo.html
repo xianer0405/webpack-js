@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Overflow Demo</title>
+    <style>
+        .box {
+            height: 120px;
+            background-color: #ccc;
+            overflow: hidden;
+            border: 1px solid #ddd
+            /* transition: all 0.3 ease-in-out; */
+        }
+
+        .content {
+            height: 300px;
+            background-color: #eee
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h4 id="1">顶部标题</h4>
+        <div class="content"></div>
+        <h4 id="2">底部标题</h4>
+    </div>
+    <p>
+        <a href="#1">点击测试</a>
+        <a href="#2">点击测试</a>
+    </p>
+</body>
+
+</html>
