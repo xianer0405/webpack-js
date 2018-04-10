@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基于Focus锚点+Overflow：hidden的横向选项卡</title>
+    <style>
+        div {
+            padding: 0 ;
+            margin: 0 ;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: #ccc;
+            overflow: hidden;
+            border: 1px solid #ddd ;
+        }
+        .box > .list-wrapper {
+            width: 800px;
+            height: 100%;
+            font-size: 0;
+        }
+        .list {
+            position: relative;
+            display: inline-block;
+            width: 200px ;
+            height: 100% ;
+            font-size: 14px;
+        }
+        .list > input {
+            position: absolute;
+            /* top: 0; */
+            left: 0 ;
+            padding: 0 ;
+            margin: 0 ;
+            width: 100%;
+            height: 1px ;
+            border: 0 ;
+            clip: rect(0 0 0 0)
+        }
+        .list.red{
+            background: red;
+        }
+        .list.orange{
+            background: orange;
+        }
+        .list.yellow{
+            background: yellow;
+        }
+        .list.green{
+            background: green;
+        }
+        .links {
+            height: 30px ;
+            line-height: 30px;
+        }
+        .links > label {
+            display: inline-block;
+            width: 20px ;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #ccc;
+            border: 1px solid #ddd ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="list-wrapper">
+            <div class="list red">
+                <span class="text">
+                    第一个选项卡
+                </span>
+                <input type="text" id="one">
+            </div>
+            <div class="list orange">
+                <span class="text">
+                    第二个选项卡
+                </span>
+                <input type="text" id="two">
+            </div>
+            <div class="list yellow">
+                <span class="text">
+                    第三个选项卡
+                </span>
+                <input type="text" id="three">
+            </div>
+            <div class="list green">
+                <span class="text">
+                    第四个选项卡
+                </span>
+                <input type="text" id="four">
+            </div>
+        </div>
+    </div>
+    <div class="links">
+        <label for="one">1</label>
+        <label for="two">2</label>
+        <label for="three">3</label>
+        <label for="four">4</label>
+    </div>
+</body>
+
+</html>
