@@ -78,12 +78,13 @@ module.exports = {
     }])
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
+    contentBase: path.resolve(__dirname, "src"),
     publicPath: "/",
     host: "localhost",
     hot: true,
     inline: true,
     compress: true,
-    port: 9000
+    port: 9000,
+    open: 'html/layout.html'
   }
 }
