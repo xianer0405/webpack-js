@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>内联元素padding值后效果</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .demo {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+    a {
+      padding: 5px ;
+      background-color: #cd0000 ;
+      color: #fff;
+      text-decoration: none;
+    }
+    .parent {
+      display: inline-block ;
+      width: 100px ;
+      vertical-align: middle ;
+    }
+    .square {
+      padding: 50%;
+      background-color: #ddd ;
+    }
+    .inline-parent {
+      display: inline-block ;
+      width: 100px ;
+      height: 100px;
+      vertical-align: 4px;
+      background: #ccc;
+    }
+    .inline {
+      background-color: #eee ;
+      font-size: 0 ;
+    }
+    .test {
+      height: 30px;
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo">
+    <a href="#" class="link">链接</a>
+  </div>
+  <div class="parent">
+    <div class="square">
+    </div>
+  </div>
+  <div class="inline-parent">
+      <span class="square inline">
+      </span>
+  </div>
+  <div class="test">
+    sdf
+  </div>
+</body>
+</html>
