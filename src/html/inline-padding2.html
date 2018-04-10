@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>内联元素的垂直padding会让“幽灵空白节点”显现</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .demo {
+      height: 200px
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+    .box {
+      margin: 100px 0;
+      width: 100px ;
+      /*height: 100px;*/
+      border: 2px dashed #cd0000;
+    }
+    .square {
+      padding: 50%;
+      background-color: #eee ;
+    }
+    .link {
+      padding: .25em 0;
+    }
+    .test {
+      height: 30px;
+      background: red;
+    }
+
+    .box.menu {
+      text-align: center;
+      border: 1px solid #333;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    a + a:before {
+      content: '';
+      margin-left: 6px;
+      padding: 10px 3px 1px ;
+      border-left: 1px solid gray;
+      font-size: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo">
+    123
+  </div>
+  <div class="box">
+      <span class="square">内有若干文字</span>
+  </div>
+  <div class="box">
+    <a class="link" href="#">链接</a>
+  </div>
+
+  <div class="box menu">
+    <a class="link" href="#">链接</a>
+    <a class="link" href="#">链接</a>
+  </div>
+  <!-- <div class="test">
+    sdf
+  </div> -->
+</body>
+</html>
