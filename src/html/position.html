@@ -3,41 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Position练习</title>
-    <style>
-        .parent {
-            width: 100%;
-            height: 300px;
-            background: #ccc;
-        }
-        .child {
-            float: left;
-            position: relative;
-            left: 50%;
-            top: 50%;
-        }
-        .sub {
-            /*必须是relative，如果是absolute，则脱离文档流，父元素将无宽高，无法通过left：-50%偏移自身宽度的一半*/
-            position: relative;
-            left: -50%;
-            transform: translate3d(0, -50%, 0);
-            background: #333;
-        }
-
-        /*.wrap-08 .ele {
-            float: left;
-            position: relative;
-            left: 50%;
-            top: 50%;
-            background-color: transparent;
-        }
-
-        .wrap-08 .ele .ele-inner {
-            position: relative;
-            left: -50%;
-            transform: translate3d(0, -50%, 0);
-            background-color: #333;
-        }*/
-    </style>
 </head>
 <body>
 <div class="parent">

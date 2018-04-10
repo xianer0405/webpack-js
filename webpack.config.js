@@ -8,23 +8,37 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 let pagePlugins = []
 const htmlPath = './src/html'
+const jsPath = './src/js'
+let jsFiles = fs.readdirSync(path.resolve(__dirname, jsPath))
+let appEntrys = {}
+let entryNames = ['index']
+for (let jsFile of jsFiles) {
+  if (jsFile.endsWith('.js')) {
+    const entryName = jsFile.slice(0, -3) ;
+    appEntrys[entryName] = jsPath + '/' + jsFile
+    entryNames.push(entryName)
+  }
+}
 let htmlPages = fs.readdirSync(path.resolve(__dirname, htmlPath))
 for (let fileName of htmlPages) {
   if (fileName.endsWith('.html')) {
+    let entryName = fileName.slice(0, -5)
+    let copyedEntryNames = [].concat(entryNames)
+    let entryIndex = copyedEntryNames.indexOf(entryName) ;
+    copyedEntryNames.splice(entryIndex, 1) 
     let plugin = new HtmlWebpackPlugin({
       title: fileName,
       filename: 'html/' + fileName,
       template: htmlPath + '/' + fileName,
-      excludeChunks: ['index']
+      excludeChunks: copyedEntryNames
     })
     pagePlugins.push(plugin);
   }
 }
-
 module.exports = {
   entry: {
     index: "./index.js",
-    app: './src/app.js'
+    ...appEntrys
   },
   output: {
     path: __dirname + "/dist",
@@ -38,6 +52,9 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: ['style-loader', 'css-loader']
+    }, {
+      test: /\.styl$/,
+      use: ['style-loader', 'css-loader', 'stylus-loader']
     }]
   },
   resolve: {
@@ -62,6 +79,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
+    publicPath: "/",
     host: "localhost",
     hot: true,
     inline: true,
